@@ -15,14 +15,14 @@ informed decisions, enhance customer relationships and maintain a healthier bott
 line. As a data analyst, delving into this realm provides an opportunity to contribute to
 the industry’s stability and success.
 
-### Steps followed :
+## Steps followed :
 
-###  1) EDA: Univariate Analysis
+##  1) EDA: Univariate Analysis
 #### Distribution of data for categorical variables:
 - 'Default' is the target variable. As we can see it is highly imbalanced with only 1288 defaulters (class 1) out of total 99979 credit card users, composing only 1% of the dataset.
 - Such high data imbalance is not suitable for model building even though the domain is such that data imbalance is a given.
 
-         To balance the target class i.e. “Defaulters” we will use SMOTE, a resampling technique. 
+                       To balance the target class i.e. “Defaulters” we will use SMOTE, a resampling technique. 
 
 - Moving forward, the credit card company should try to add more defaulters in coming future to this existing dataset so as to make it more balanced, as balanced datasets lead to more robust model building.
 
@@ -42,13 +42,10 @@ the industry’s stability and success.
 - we will also drop such variables which are not required for our model building namely 'userid', 'name_in_email'.
 - Almost all the continuous numeric variables have highly skewed boxplots, with only a few exceptions.
 
-            There are a lot of Outliers in almost all the variables. These need to be treated.
-- Another thing to note is that variables are on different scales, so some form of scaling will be needed to be done on the dataset.
-
-            For this we will be using Standard-Scaler feature from scikitlearn library of Python.        
+                  There are a lot of Outliers in almost all the variables. These need to be treated.   
 
 
-### 2) EDA: Bivariate & Multivariate Analysis
+## 2) EDA: Bivariate & Multivariate Analysis
 
 - For checking the correlation between independent variables we will be using heatmap instead of scatter-plots, reason being heat-map are better at quantifying the correlation.
 - Due to the dataset having large number of numerical variables, the pair-plot becomes illegible as it produces all the possible combination of correlated variables in one single visualisation.
@@ -91,10 +88,10 @@ the industry’s stability and success.
 
 • This shows that there is multicollinearity present in the data and thus we will have to reduce it during model building.
 
-            For this, we will use VIF(Variance Inflation Factor) technique.
+                            For this, we will use VIF(Variance Inflation Factor) technique.
 • **VIF** is a statistical measure used in regression analysis to assess multicollinearity among independent variables. It measures the degree to which the accuracy of a regression model is affected when independent variables are correlated with each other.
 
-### 3) Data Cleaning and Pre-processing :
+## 3) Data Cleaning and Pre-processing :
 
 #### A) Missing Value treatment
 
@@ -124,7 +121,7 @@ All the variables have outliers except 'time_hours'.
 ![final_boxplots](https://github.com/VivekSagarSingh/Probability-of-Credit-card-Default/assets/153344691/6e1ed83e-fbdd-4fe8-a290-c657ddb0b0b1)
 
 
-### 4) Model Building :
+## 4) Model Building :
 #### A) Model Selection 
 Our target variable “default” is a binary variable with 0 denoting non-defaulting credit card users and 1 denoting defaulting credit card users.
 
@@ -161,7 +158,7 @@ Checking the class proportion of target variable and applying SMOTE on train dat
 
 #### Their corresponding classification reports, confusion matrices and ROC curves along with all the relevant charts can be found in the attached python Jupyter notebook (.ipynb file).
 
-### 5) Model Validation
+## 5) Model Validation
 • To evaluate the performance of the above mentioned modelling techniques we generally use “Classification report” based performance metrics namely ‘Accuracy’, ‘Precision’ and ‘Recall’ along with ROC(Region of convergence) and AUC(Area under the curve) scores.
 
 **• Since our goal is to predict the credit card users that will default, the performance metric ‘Recall’ becomes the most important metric for us.**
@@ -191,7 +188,7 @@ Checking the class proportion of target variable and applying SMOTE on train dat
 Also, **LDA model has a slight edge over Logistic regression in terms of recall value. Hence, we would choose LDA to be our final model**, just for the sake of moving ahead with one best model for detailed analysis and deployment.
 
 
-### 6) Performance Metrics with respect to test data for the Best-Fit LDA Model
+## 6) Performance Metrics with respect to test data for the Best-Fit LDA Model
 
 #### Classification report:
 
@@ -239,7 +236,7 @@ best-fit model failed to identify 70 defaulters, which comes around 18%. This is
 the best we could do across all the models built.
 
 
-### 7) Insights from the final (most optimum) model i.e. LDA Model
+## 7) Insights from the final (most optimum) model i.e. LDA Model
 • Looking at our most optimum model i.e. tuned LDA model, the top 3 predictors based on the Linear discriminant function that play a major role in predicting classes are as follows (Linear discriminant function is a linear combination of the input features that maximises the separation between classes):
 
 **‣ ’num_active_inv’(0.65) :** This represents Total number of active invoices per user, i.e. Unpaid bills. It is positively correlated to predicting classes meaning, based on analysis we can say that **users with large number of active invoices are 60% more likely to belong to class 1(defaulters). Hence, this becomes our most important predictor.**
@@ -283,7 +280,9 @@ assessment. Since finance is the base for almost all economic activities in the 
 financial risk assessments are taken very seriously due to which the ratio of
 defaulters to non-defaulters is usually quite low leading to such high imbalances.
 
-### 8) Model Implication on the business and recommendations
+
+
+## 8) Model Implication on the business and recommendations
 **• Since ‘Total number of active invoices per user’ is our most important predictor**, the
 credit card company should device specific plans around this variable.
 
